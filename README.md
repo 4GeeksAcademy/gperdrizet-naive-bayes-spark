@@ -1,2 +1,3 @@
-# codespace-spark-server
-Server node for GitHub Codespace Spark cluster.
+# Codespace Spark Cluster: headnode
+
+Headnode for GitHub Codespace Spark cluster.
