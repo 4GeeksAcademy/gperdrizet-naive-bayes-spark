@@ -15,7 +15,5 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "curl https://dlcdn.apache.org/spark/spark-3.5.5/spark-3.5.5-bin-hadoop3.tgz --output /tmp/spark.tgz",
-	"postCreateCommand": "mkdir /opt/spark",
-	"postCreateCommand": "tar -xf /tmp/spark.tgz -C /opt/spark"
+	"postCreateCommand": "/workspaces/codespace-spark-cluster-headnode/get_spark.sh"
 }
