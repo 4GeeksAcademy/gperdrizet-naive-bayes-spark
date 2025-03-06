@@ -3,7 +3,7 @@
 {
 	"name": "codespace-spark-cluster-headnode",
 	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
-	//"onCreateCommand": "pip3 install --upgrade pip && pip3 install --user -r requirements.txt",
+	"onCreateCommand": "pip3 install --upgrade pip && pip3 install --user -r requirements.txt",
 	"customizations": {
 	  "vscode": {
 		"settings": {},
