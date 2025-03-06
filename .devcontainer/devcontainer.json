@@ -15,5 +15,5 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "/workspaces/codespace-spark-cluster-headnode/get_spark.sh"
+	"postCreateCommand": "$CODESPACE_VSCODE_FOLDER/get_spark.sh"
 }
