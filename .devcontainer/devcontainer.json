@@ -9,11 +9,11 @@
 		"settings": {},
 		"extensions": []
 	  }
-	}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	//"postCreateCommand": ".devcontainer/get_spark.sh"
+	"postCreateCommand": ".devcontainer/get_spark.sh"
 }
