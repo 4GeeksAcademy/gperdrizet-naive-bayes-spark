@@ -2,18 +2,18 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
 	"name": "codespace-spark-cluster-headnode",
-	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
+	"image": "apache/spark:3.5.5",
 	//"onCreateCommand": "pip3 install --upgrade pip && pip3 install --user -r requirements.txt",
 	"customizations": {
 	  "vscode": {
 		"settings": {},
 		"extensions": []
 	  }
-	},
+	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": ".devcontainer/get_spark.sh"
+	//"postCreateCommand": ".devcontainer/get_spark.sh"
 }
