@@ -15,5 +15,5 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo /opt/spark/sbin/start-master.sh && htop"
+	"postCreateCommand": "sudo /opt/spark/sbin/start-master.sh"
 }
