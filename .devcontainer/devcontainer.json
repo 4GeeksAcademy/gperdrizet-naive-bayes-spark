@@ -3,7 +3,7 @@
 {
 	"name": "codespace-spark-cluster-headnode",
 	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
-	//"onCreateCommand": "pip3 install --upgrade pip && pip3 install --user -r requirements.txt",
+	"onCreateCommand": ".devcontainer/get_spark.sh",
 	"customizations": {
 	  "vscode": {
 		"settings": {},
@@ -15,5 +15,5 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": ".devcontainer/get_spark.sh"
+	"postCreateCommand": "/opt/spark/sbin/start-master.sh"
 }
