@@ -13,7 +13,12 @@
 	"customizations": {
 		"vscode": {
 		  "settings": {"remote.autoForwardPorts": false}, // Don't autoforward ports
-		  "extensions": ["-dbaeumer.vscode-eslint"] // We don't need a java linter
+		  "extensions": [
+			"-dbaeumer.vscode-eslint",
+			"-ms-python.vscode-pylance",
+			"-ms-python.python",
+			"-ms-python.debugpy"
+		  ]
 		}
 	},
 	
