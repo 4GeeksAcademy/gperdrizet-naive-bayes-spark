@@ -4,22 +4,17 @@
 	"name": "codespace-spark-cluster-headnode",
 	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
 
-	// Add a SSH server to the container
-	"features": {
-		"ghcr.io/devcontainers/features/sshd:1": {
-			"version": "latest"
-		}
-	},
+	"onCreateCommand": "pip3 install --upgrade pip && pip3 install --user -r requirements.txt",
 	"customizations": {
-		"vscode": {
-		  "settings": {"remote.autoForwardPorts": false}, // Don't autoforward ports
-		  "extensions": [ // Block intall of unncessary VScode extensions
-			"-dbaeumer.vscode-eslint",
-			"-ms-python.vscode-pylance",
-			"-ms-python.python",
-			"-ms-python.debugpy"
-		  ]
-		}
+	  "vscode": {
+		"settings": {"jupyter.kernels.excludePythonEnvironments": ["/usr/bin/python3"]},
+		"extensions": [
+		  "-dbaeumer.vscode-eslint",
+		  "ms-python.python",
+		  "ms-toolsai.jupyter",
+		  "streetsidesoftware.code-spell-checker"
+		]
+	  }
 	},
 	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
