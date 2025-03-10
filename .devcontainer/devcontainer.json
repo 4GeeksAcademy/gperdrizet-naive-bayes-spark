@@ -3,26 +3,27 @@
 {
 	"name": "codespace-spark-cluster-headnode",
 	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
-	"onCreateCommand": ".devcontainer/get_spark.sh",
-	// "customizations": {
-	//   "vscode": {
-	// 	"settings": {},
-	// 	"extensions": []
-	//   }
-	// },
 
+	// Add a SSH server to the container
+	"features": {
+		"ghcr.io/devcontainers/features/sshd:1": {
+			"version": "latest"
+		}
+	},
+	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [7077,8080],
+	"forwardPorts": [8080],
 
+	// Set name for forwared ports
 	"portsAttributes": {
-		"7077": {
-			"label": "spark"
-		},
 		"8080": {
 			"label": "sparkUI"
 		}
 	},
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo /opt/spark/sbin/start-master.sh --host 0.0.0.0"
+	
+	// Get spark and set it up when the container is created
+	"onCreateCommand": ".devcontainer/get_spark.sh",
+	
+	// Start Spark whenever we attach to the container, and leave htop running in a terminal
+	"postAttachCommand": "sudo /opt/spark/sbin/start-master.sh --port 7077 --host 0.0.0.0 && htop"
 }
