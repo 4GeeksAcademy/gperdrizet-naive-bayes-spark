@@ -10,6 +10,12 @@
 			"version": "latest"
 		}
 	},
+	"customizations": {
+		"vscode": {
+		  "settings": {"remote.autoForwardPorts": false}, // Don't autoforward ports
+		  "extensions": ["-dbaeumer.vscode-eslint"] // We don't need a java linter
+		}
+	},
 	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [8080],
