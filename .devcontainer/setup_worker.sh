@@ -10,5 +10,5 @@
 	&& sudo apt install gh -y
 
 mkdir ~/.ssh
-gh codespace ssh -c fuzzy-space-giggle-55g65wwg6xh4w45 --config > ~/.ssh/config
-ssh -vfN -L 7077:localhost:7077 cs.fuzzy-space-giggle-55g65wwg6xh4w45.main
+gh codespace ssh -c `cat .devcontainer/headnode_host.txt` --config > ~/.ssh/config
+ssh -vfN -L 7077:localhost:7077 cs.`cat .devcontainer/headnode_host.txt`.main
