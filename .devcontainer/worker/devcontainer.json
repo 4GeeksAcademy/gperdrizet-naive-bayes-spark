@@ -8,7 +8,7 @@
     "customizations": {
         "vscode": {
             "settings": {"remote.autoForwardPorts": false}, // Don't autoforward ports
-            "extensions": [ // Block intall of unncessary VScode extensions
+            "extensions": [ // Block install of unncessary VScode extensions
                 "-dbaeumer.vscode-eslint",
                 "-ms-python.vscode-pylance",
                 "-ms-python.python",
