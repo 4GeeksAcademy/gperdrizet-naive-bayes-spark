@@ -31,5 +31,5 @@
     "onCreateCommand": [".devcontainer/get_spark.sh", ".devcontainer/setup_worker.sh"],
 
     // Start Spark whenever we attach to the container, and leave htop running in a terminal
-    "postAttachCommand": "sudo /opt/spark/sbin/start-worker.sh localhost:7077 --webui-port 8080 && htop"
+    "postAttachCommand": "ssh -vfN -L 7077:localhost:7077 cs.`cat .devcontainer/headnode_host.txt`.main && sudo /opt/spark/sbin/start-worker.sh localhost:7077 --webui-port 8080 && htop"
 }
