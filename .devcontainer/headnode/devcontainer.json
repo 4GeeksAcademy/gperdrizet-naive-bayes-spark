@@ -15,7 +15,7 @@
     "customizations": {
         "vscode": {
         "settings": {"remote.autoForwardPorts": false}, // Don't autoforward ports
-            "extensions": [ // Block intall of unncessary VScode extensions
+            "extensions": [ // Block install of unncessary VScode extensions
                 "-dbaeumer.vscode-eslint",
                 "-ms-python.vscode-pylance",
                 "-ms-python.python",
@@ -35,7 +35,7 @@
     },
 
     // Get spark and set it up when the container is created
-    "onCreateCommand": [".devcontainer/intall_spark.sh"],
+    "onCreateCommand": [".devcontainer/install_spark.sh"],
 	
     // Update hostname and start Spark master, then leave htop running in a terminal
     "postAttachCommand": ".devcontainer/start_headnode.sh && htop"
