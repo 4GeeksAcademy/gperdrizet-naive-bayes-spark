@@ -35,7 +35,7 @@
     },
 
     // Get spark and set it up when the container is created
-    "onCreateCommand": [".devcontainer/get_spark.sh", ".devcontainer/setup_worker.sh"],
+    "onCreateCommand": [".devcontainer/worker/get_spark.sh", ".devcontainer/worker/setup_worker.sh"],
 
     // Start Spark whenever we attach to the container, and leave htop running in a terminal
     "postAttachCommand": "sudo /opt/spark/sbin/start-worker.sh localhost:7077 --webui-port 8080 && htop"

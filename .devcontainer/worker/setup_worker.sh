@@ -11,4 +11,4 @@ sudo apt intstall screen
 	&& sudo apt install gh -y
 
 mkdir ~/.ssh
-gh codespace ssh -c legendary-sniffle-jqp76qxq9vpfq59v --config > ~/.ssh/config
+gh codespace ssh -c fuzzy-space-giggle-55g65wwg6xh4w45 --config > ~/.ssh/config
