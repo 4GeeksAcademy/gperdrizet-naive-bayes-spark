@@ -6,6 +6,7 @@
 # pushes to GitHub for workers to read. Starts Spark master listening on 
 # localhost port 7077.
 
+git pull
 echo $CODESPACE_NAME > .devcontainer/headnode_hostname
 git add .devcontainer/headnode_hostname
 git commit -m "Updated headnode hostname"
