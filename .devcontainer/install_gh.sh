@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Run by devcontainer's 'onCreateCommand'
+#
+# Install the Github CLI from the offical repository via the system's
+# package manager.
+
 (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
 	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
         && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
@@ -8,6 +13,3 @@
 	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
 	&& sudo apt update -y \
 	&& sudo apt install gh -y
-
-mkdir ~/.ssh
-gh codespace ssh -c `cat .devcontainer/headnode_host.txt` --config > ~/.ssh/config
