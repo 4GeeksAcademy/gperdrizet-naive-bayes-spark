@@ -1,41 +1,42 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "codespace-spark-cluster-headnode",
-	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
+    "name": "codespace-spark-cluster-headnode",
+    "image": "mcr.microsoft.com/devcontainers/python:0-3.11",
 
-	// Add a SSH server to the container
-	"features": {
-		"ghcr.io/devcontainers/features/sshd:1": {
-			"version": "latest"
-		}
-	},
-	
-	"customizations": {
-		"vscode": {
-		  "settings": {"remote.autoForwardPorts": false}, // Don't autoforward ports
-		  "extensions": [ // Block intall of unncessary VScode extensions
-			"-dbaeumer.vscode-eslint",
-			"-ms-python.vscode-pylance",
-			"-ms-python.python",
-			"-ms-python.debugpy"
-		  ]
-		}
-	},
-	
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8080],
+    // Add a SSH server to the container
+    "features": {
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
+        }
+    },
 
-	// Set name for forwared ports
-	"portsAttributes": {
-		"8080": {
-			"label": "spark-WebUI"
-		}
-	},
-	
-	// Get spark and set it up when the container is created
-	"onCreateCommand": [".devcontainer/get_spark.sh", ".devcontainer/setup_worker.sh"],
-	
-	// Start Spark whenever we attach to the container, and leave htop running in a terminal
-	"postAttachCommand": "sudo /opt/spark/sbin/start-worker.sh localhost:7077 --webui-port 8080 && htop"
+    // Set-up VSCode
+    "customizations": {
+        "vscode": {
+            "settings": {"remote.autoForwardPorts": false}, // Don't autoforward ports
+            "extensions": [ // Block intall of unncessary VScode extensions
+                "-dbaeumer.vscode-eslint",
+                "-ms-python.vscode-pylance",
+                "-ms-python.python",
+                "-ms-python.debugpy"
+            ]
+        }
+    },
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [8080],
+
+    // Set name for forwared ports
+    "portsAttributes": {
+        "8080": {
+            "label": "spark-WebUI"
+        }
+    },
+
+    // Get spark and set it up when the container is created
+    "onCreateCommand": [".devcontainer/get_spark.sh", ".devcontainer/setup_worker.sh"],
+
+    // Start Spark whenever we attach to the container, and leave htop running in a terminal
+    "postAttachCommand": "sudo /opt/spark/sbin/start-worker.sh localhost:7077 --webui-port 8080 && htop"
 }
