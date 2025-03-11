@@ -1,44 +1,45 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "project",
-	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
+    "name": "project",
+    "image": "mcr.microsoft.com/devcontainers/python:0-3.11",
 
-	"customizations": {
-	  "vscode": {
-		"settings": {"jupyter.kernels.excludePythonEnvironments": ["/usr/bin/python3"]},
-		"extensions": [
-		  "-dbaeumer.vscode-eslint",
-		  "ms-python.python",
-		  "ms-toolsai.jupyter",
-		  "streetsidesoftware.code-spell-checker"
-		]
-	  }
-	},
+    // Set-up VScode
+    "customizations": {
+        "vscode": {
+            "settings": {"jupyter.kernels.excludePythonEnvironments": ["/usr/bin/python3"]},
+            "extensions": [
+                "-dbaeumer.vscode-eslint",
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        }
+    },
 	
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8080],
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [8080],
 
-	// Set name for forwared ports
-	"portsAttributes": {
-		"8080": {
-			"label": "sparkUI"
-		}
-	},
+    // Set name for forwared ports
+    "portsAttributes": {
+        "8080": {
+            "label": "sparkUI"
+        }
+    },
 
-	// Set-up Python stuff and Spark
-	"onCreateCommand": [
-		"pip3 install --upgrade pip",
-		"pip3 install --user -r requirements.txt",
-		".devcontainer/project/get_spark.sh",
-		".devcontainer/setup_worker.sh",
-                "mkdir data",
-		"mkdir data/raw",
-		"mkdir data/interim",
-		"mkdir data/processed",
-		"mkdir models"
-	],
+    // Set-up Python stuff and Spark
+    "onCreateCommand": [
+        "pip3 install --upgrade pip",
+        "pip3 install --user -r requirements.txt",
+        ".devcontainer/project/get_spark.sh",
+        ".devcontainer/setup_worker.sh",
+        "mkdir data",
+        "mkdir data/raw",
+        "mkdir data/interim",
+        "mkdir data/processed",
+        "mkdir models"
+    ],
 	
-	// Start Spark whenever we attach to the container, and leave htop running in a terminal
-	"postAttachCommand": "sudo /opt/spark/sbin/start-worker.sh localhost:7077 --webui-port 8888 && htop"
+    // Start Spark whenever we attach to the container, and leave htop running in a terminal
+    "postAttachCommand": "sudo /opt/spark/sbin/start-worker.sh localhost:7077 --webui-port 8888 && htop"
 }
