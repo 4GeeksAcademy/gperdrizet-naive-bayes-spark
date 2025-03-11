@@ -1,10 +1,9 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "codespace-spark-cluster-headnode",
+	"name": "project",
 	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
 
-	"onCreateCommand": "pip3 install --upgrade pip && pip3 install --user -r requirements.txt",
 	"customizations": {
 	  "vscode": {
 		"settings": {"jupyter.kernels.excludePythonEnvironments": ["/usr/bin/python3"]},
@@ -26,10 +25,20 @@
 			"label": "sparkUI"
 		}
 	},
-	
-	// Get spark and set it up when the container is created
-	"onCreateCommand": ".devcontainer/get_spark.sh",
+
+	// Set-up Python stuff and Spark
+	"onCreateCommand": [
+		"pip3 install --upgrade pip",
+		"pip3 install --user -r requirements.txt",
+		".devcontainer/project/get_spark.sh",
+		".devcontainer/setup_worker.sh",
+                "mkdir data",
+		"mkdir data/raw",
+		"mkdir data/interim",
+		"mkdir data/processed",
+		"mkdir models"
+	],
 	
 	// Start Spark whenever we attach to the container, and leave htop running in a terminal
-	"postAttachCommand": "sudo /opt/spark/sbin/start-master.sh --port 7077 --host 0.0.0.0 && htop"
+	"postAttachCommand": "sudo /opt/spark/sbin/start-worker.sh localhost:7077 --webui-port 8888 && htop"
 }
