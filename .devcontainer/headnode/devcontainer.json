@@ -25,11 +25,14 @@
     },
 
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    "forwardPorts": [8080],
+    "forwardPorts": [8080, 8081],
 
     // Label the Spark WebUI port
     "portsAttributes": {
         "8080": {
+            "label": "spark-headnode-webUI"
+        },
+        "8081": {
             "label": "spark-webUI"
         }
     },
